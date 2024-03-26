@@ -40,6 +40,23 @@ public class Produto {
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
 
+	public Produto() {
+
+	}
+
+	public Produto(
+			@NotBlank(message = "O nome do produto é obrigatório!") @Size(min = 3, max = 100, message = "O nome do produto deve conter entre 03 e 100 caracteres") String nome,
+			@NotNull String idade,
+			@DecimalMin(value = "0.00", message = "O preço deve ser maior que zero") @Digits(integer = 6, fraction = 2, message = "O preço deve ter no máximo 6 dígitos inteiros e 2 dígitos decimais") BigDecimal preco,
+			int quantidade, Categoria categoria, boolean promocao) {
+		this.nome = nome;
+		this.idade = idade;
+		this.preco = preco;
+		this.quantidade = quantidade;
+		this.categoria = categoria;
+		this.promocao = promocao;
+	}
+
 	private boolean promocao;
 
 	public boolean isPromocao() {

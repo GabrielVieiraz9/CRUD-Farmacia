@@ -2,6 +2,7 @@ package com.generation.farmacia.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -29,7 +30,20 @@ public class Categoria {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("categoria")
+	@JsonIgnore
 	private List<Produto> produto;
+
+	public Categoria() {
+
+	}
+
+	public Categoria(Long id,
+			@NotNull(message = "O Atributo Nome deve ser obrigatório") @Size(min = 3, max = 50, message = "O tamanho da string deve estar entre 3 e 50 caracteres") String nome,
+			List<Produto> produto) {
+		this.id = id;
+		this.nome = nome;
+		this.produto = produto;
+	}
 
 	public Long getId() {
 		return id;

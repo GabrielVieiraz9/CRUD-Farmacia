@@ -1,4 +1,4 @@
-package com.generation.teste20mar;
+package com.generation.farmacia.teste;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
