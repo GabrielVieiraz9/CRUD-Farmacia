@@ -78,4 +78,16 @@ public class ProdutoController {
 
 		produtoRepository.deleteById(id);
 	}
+
+	@GetMapping("/baixo-estoque")
+	public ResponseEntity<List<Produto>> getProdutosEstoqueBaixo() {
+		List<Produto> produtosEstoqueBaixo = produtoRepository.findByQuantidadeLessThanEqual(5);
+		return ResponseEntity.ok(produtosEstoqueBaixo);
+	}
+
+	@GetMapping("/promocao")
+	public ResponseEntity<List<Produto>> getProdutosPromocao() {
+		List<Produto> produtosPromocao = produtoRepository.findByPromocaoTrue();
+		return ResponseEntity.ok(produtosPromocao);
+	}
 }

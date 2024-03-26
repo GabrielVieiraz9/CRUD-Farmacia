@@ -40,6 +40,16 @@ public class Produto {
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
 
+	private boolean promocao;
+
+	public boolean isPromocao() {
+		return promocao;
+	}
+
+	public void setPromocao(boolean promocao) {
+		this.promocao = promocao;
+	}
+
 	public Long getId() {
 		return id;
 	}
